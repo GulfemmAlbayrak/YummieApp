@@ -41,6 +41,7 @@
 		D77BC9852B35E0B000B99581 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77BC9842B35E0B000B99581 /* AppError.swift */; };
 		D77BC9872B35E0BA00B99581 /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77BC9862B35E0BA00B99581 /* ApiResponse.swift */; };
 		D77BC9892B35E10500B99581 /* AllDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77BC9882B35E10500B99581 /* AllDishes.swift */; };
+		D77BC98B2B378BEB00B99581 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77BC98A2B378BEB00B99581 /* UserDefaults+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		D77BC9842B35E0B000B99581 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		D77BC9862B35E0BA00B99581 /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
 		D77BC9882B35E10500B99581 /* AllDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDishes.swift; sourceTree = "<group>"; };
+		D77BC98A2B378BEB00B99581 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 				D77BC9172B34415500B99581 /* UIView+Extension.swift */,
 				D77BC9282B34524C00B99581 /* String+Extension.swift */,
 				D77BC93C2B347D2300B99581 /* UIViewController+Extension.swift */,
+				D77BC98A2B378BEB00B99581 /* UserDefaults+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				D77BC9852B35E0B000B99581 /* AppError.swift in Sources */,
 				D77BC9332B3459E900B99581 /* Dish.swift in Sources */,
 				D77BC93D2B347D2300B99581 /* UIViewController+Extension.swift in Sources */,
+				D77BC98B2B378BEB00B99581 /* UserDefaults+Extension.swift in Sources */,
 				D77BC9302B3458C800B99581 /* DishPortraitCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

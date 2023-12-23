@@ -6,20 +6,32 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class ListOrdersViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var orders: [Order] = [
-         .init(id: "id1", name: "Gülfem jkdhf", dish: .init(id: "id1", name: "Garri", description: "This is the best I have ever tasted This is the best I have ever tasted This is the best I have ever tasted This is the best I have ever tasted This is the best I have ever tasted This is the best I have ever tasted This is the best I have ever tastedThis is the best I have ever tasted", image: "https://picsum.photos/100/200", calories: 34)),
-        .init(id: "id2", name: "Batuhan jkdhf", dish: .init(id: "id1", name: "dyrutr", description: "This is the best I have ever tasted This is the best I have ever tasted This is the best I have ever tasted This is the best I have ever tasted This is the best I have ever tasted This is the best I have ever tasted This is the best I have ever tastedThis is the best I have ever tasted", image: "https://picsum.photos/100/200", calories: 34)),
-        .init(id: "id3", name: "Arife jkdhf", dish: .init(id: "id1", name: "Gartrutruri", description: "This is the best I have ever tasted This is the best I have ever tasted This is the best I have ever tasted This is the best I have ever tasted This is the best I have ever tasted This is the best I have ever tasted This is the best I have ever tastedThis is the best I have ever tasted", image: "https://picsum.photos/100/200", calories: 34)),
-        .init(id: "id4", name: "Berfin jkdhf", dish: .init(id: "id1", name: "Garwerwtwri", description: "This is the best I have ever tasted This is the best I have ever tasted This is the best I have ever tasted This is the best I have ever tasted This is the best I have ever tasted This is the best I have ever tasted This is the best I have ever tastedThis is the best I have ever tasted", image: "https://picsum.photos/100/200", calories: 34))
-    ]
+    var orders: [Order] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Orders"
         registerCells()
+        
+        ProgressHUD.animate()
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        NetworkService.shared.fetchOrders { [ weak self ] (result) in
+            switch result {
+            case .success(let orders):
+                ProgressHUD.dismiss()
+                self?.orders = orders
+                self?.tableView.reloadData()
+            case .failure(let error):
+                ProgressHUD.error(error.localizedDescription)
+            }
+        }
     }
     
   private func registerCells() {
@@ -40,5 +52,11 @@ extension ListOrdersViewController: UITableViewDelegate, UITableViewDataSource {
         let controller = DishDetailViewController.instantiate()
         controller.dish = orders[indexPath.row].dish
         navigationController?.pushViewController(controller, animated: true)
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            orders.remove(at: indexPath.row)
+            tableView.deleteRows(at:  [indexPath], with: .automatic)
+        }
     }
 }
